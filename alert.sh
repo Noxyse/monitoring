@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 LOG_FILE="/var/log/auth.log"
-EMAIL="noxise.nox@gmail.com"
+EMAIL=""
 
 #tail -F "$LOG_FILE" | while read LINE; do
 #	echo "$LINE" | grep 'Accepted password for' && \
@@ -15,6 +15,6 @@ CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *$[0-9]*$%* id.*/\1/" | awk '{
 
 # Check if CPU usage is above the threshold
 if (( $(echo "$CPU_USAGE > $THRESHOLD" | bc -l) )); then
-    echo "CPU usage is above threshold: ${CPU_USAGE}%" | mail -s "CPU Alert" noxise.nox@gmail.com
+    echo "CPU usage is above threshold: ${CPU_USAGE}%" | mail -s "CPU Alert" "$EMAIL"
 fi
 
